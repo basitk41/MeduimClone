@@ -30,7 +30,7 @@ const Drawer = ({
           &times;
         </a>
         <h3>Comments</h3>
-        <h6 style={{ height: "19.19px" }}>
+        <h6 style={{ height: "45px" }}>
           <span style={{ backgroundColor: "rgba(26, 137, 23, 0.2)" }}>
             {text}
           </span>
