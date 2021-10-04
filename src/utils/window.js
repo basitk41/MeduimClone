@@ -5,8 +5,22 @@ export const tooltipPosition = () => {
     y: getSelection.getRangeAt(0).getBoundingClientRect().y,
   };
 };
+
 export const getSelectionHtml = () => {
-  let container = document.createElement("div");
-  container.appendChild(getSelection.getRangeAt(0).cloneContents());
-  return container.innerHTML;
+  let html = "";
+  if (typeof getSelection != "undefined") {
+    let sel = getSelection;
+    if (sel.rangeCount) {
+      let container = document.createElement("div");
+      for (let i = 0, len = sel.rangeCount; i < len; ++i) {
+        container.appendChild(sel.getRangeAt(i).cloneContents());
+      }
+      html = container.innerHTML;
+    }
+  } else if (typeof document.selection != "undefined") {
+    if (document.selection.type === "Text") {
+      html = document.selection.createRange().htmlText;
+    }
+  }
+  return html;
 };
