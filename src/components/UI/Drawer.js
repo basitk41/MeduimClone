@@ -24,7 +24,13 @@ const Drawer = ({
     if (index > -1) setComment(comments[index].comment);
   }, [text, comments]);
   return (
-    <div style={backdrop} onClick={() => setIsOpened(false)}>
+    <div
+      style={backdrop}
+      onClick={() => {
+        setIsOpened(false);
+        setText("");
+      }}
+    >
       <div style={style} onClick={(e) => e.stopPropagation()}>
         <a href style={closebtnStyle} onClick={() => setIsOpened(false)}>
           &times;
